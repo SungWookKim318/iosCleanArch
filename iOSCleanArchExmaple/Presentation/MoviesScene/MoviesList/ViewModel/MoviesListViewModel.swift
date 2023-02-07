@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct MoviesListViewModelAction {
+struct MoviesListViewModelActions {
     
 }
 
@@ -19,9 +19,9 @@ enum MoviesListViewModelLoading {
 
 final class MoviesListViewModel: ObservableObject {
     private let searchMoviesUseCase: SearchMoviesUseCase?
-    private let actions: MoviesListViewModelAction?
+    private let actions: MoviesListViewModelActions?
     
-    init(searchMoviesUseCase: SearchMoviesUseCase?, actions: MoviesListViewModelAction?) {
+    init(searchMoviesUseCase: SearchMoviesUseCase?, actions: MoviesListViewModelActions?) {
         self.searchMoviesUseCase = searchMoviesUseCase
         self.actions = actions
     }
@@ -36,6 +36,7 @@ final class MoviesListViewModel: ObservableObject {
     func requestSearch(query: String) {
         
     }
+    
 }
 
 extension MoviesListViewModel {
