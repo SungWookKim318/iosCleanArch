@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SearchBarView: View {
     @State private var text: String = ""
+    var defaultText: String = "Search"
     var action: (String) -> ()
     private let inactiveColor = Color.gray.opacity(0.5)
     private let activeColor = Color.gray
@@ -16,7 +17,7 @@ struct SearchBarView: View {
         HStack {
             HStack {
                 Image(systemName: "magnifyingglass")
-                TextField("Search", text: $text)
+                TextField(defaultText, text: $text)
                     .onSubmit {
                         action(text)
                     }
@@ -28,7 +29,7 @@ struct SearchBarView: View {
                     Button {
                         self.text = ""
                     } label: {
-                        Image(systemName: "xmark.circle").foregroundColor(activeColor)
+                        Image(systemName: "xmark.circle.fill").foregroundColor(activeColor)
                     }
                 }
             }

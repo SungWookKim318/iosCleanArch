@@ -60,14 +60,9 @@ final class MoviesSceneDIContainer {
     }
 //
 //    // MARK: - Movie Details
-//    func makeMoviesDetailsViewController(movie: Movie) -> UIViewController {
-//        return MovieDetailsViewController.create(with: makeMoviesDetailsViewModel(movie: movie))
-//    }
-//
-//    func makeMoviesDetailsViewModel(movie: Movie) -> MovieDetailsViewModel {
-//        return DefaultMovieDetailsViewModel(movie: movie,
-//                                            posterImagesRepository: makePosterImagesRepository())
-//    }
+    func makeMoviesDetailsViewModel(movie: Movie) -> MovieDetailsViewModel {
+        return MovieDetailsViewModel(movie: movie, posterImagesRepository: makePosterImagesRepository())
+    }
 //
 //    // MARK: - Movies Queries Suggestions List
 //    func makeMoviesQueriesSuggestionsListViewController(didSelect: @escaping MoviesQueryListViewModelDidSelectAction) -> UIViewController {
@@ -98,10 +93,19 @@ final class MoviesSceneDIContainer {
 }
 
 extension MoviesSceneDIContainer: MoviesSearchFlowCoordinatorDependencies {
-    // MARK: - Movies List
+    // Movies List
     func makeMoviesListViewController(actions: MoviesListViewModelActions) -> UIViewController {
         let newView = MoviesListView(moviesListViewModel: makeMoviesListViewModel(actions: actions))
         return UIHostingController(rootView: newView)
 //        return MoviesListViewController.create(with: makeMoviesListViewModel(actions: actions), posterImagesRepository: makePosterImagesRepository())
     }
+    
+    
+    func makeMoviesDetailsViewController(movie: Movie) -> UIViewController {
+        let newView = MovieDetailsView(movieDetailViewModel: makeMoviesDetailsViewModel(movie: movie))
+        return UIHostingController(rootView: newView)
+    }
+    //    func makeMoviesDetailsViewController(movie: Movie) -> UIViewController {
+    //        return MovieDetailsViewController.create(with: makeMoviesDetailsViewModel(movie: movie))
+    //    }
 }
